@@ -22,12 +22,14 @@ public class ItemService {
 	}
 	
 	//merge 쓰는 것보다 변경감지기능 사용하는 게 더 나은 코드
+	//setter를 쓰는 것보다 기능이 의미있는 메소드를 만들어서 update를 진행하는 게 좋다.
 	@Transactional
-	public void updateItem(Long itemId, Item itemParam) {
+	public void updateItem(Long itemId, String name, int price, int stockQuantity) {
 		Item findItem = itemRepository.findOne(itemId);
-		findItem.setPrice(itemParam.getPrice());
-		findItem.setName(itemParam.getName());
-		findItem.setStockQuantity(itemParam.getStockQuantity());
+		findItem.setPrice(price);
+		findItem.setName(name);
+		findItem.setStockQuantity(stockQuantity);
+		
 	}
 	
 	
