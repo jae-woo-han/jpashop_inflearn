@@ -21,6 +21,16 @@ public class ItemService {
 		itemRepository.save(item);
 	}
 	
+	//merge 쓰는 것보다 변경감지기능 사용하는 게 더 나은 코드
+	@Transactional
+	public void updateItem(Long itemId, Item itemParam) {
+		Item findItem = itemRepository.findOne(itemId);
+		findItem.setPrice(itemParam.getPrice());
+		findItem.setName(itemParam.getName());
+		findItem.setStockQuantity(itemParam.getStockQuantity());
+	}
+	
+	
 	public List<Item> findItems(){
 		return itemRepository.findAll();
 	}
