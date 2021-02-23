@@ -27,7 +27,7 @@ public class OrderService {
 	//주문
 	@Transactional
 	public Long order(Long memberId, Long itemId, int count) {
-		Member member = memberRepository.findOne(memberId);
+		Member member = memberRepository.findById(memberId).get();
 		Item item = itemRepository.findOne(itemId);
 		
 		Delivery delivery = new Delivery();
@@ -53,6 +53,6 @@ public class OrderService {
 	
 	//검색
 	public List<Order> findOrders(OrderSearch orderSearch){
-		return orderRepository.findAllByString(orderSearch);
+		return orderRepository.findAll(orderSearch);
 	}
 }
