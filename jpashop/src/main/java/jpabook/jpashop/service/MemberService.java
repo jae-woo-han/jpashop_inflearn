@@ -36,7 +36,7 @@ public class MemberService {
 	}
 	private void validateDuplicateMember(Member member) {
 		//중복이면 예외 발생
-		List<Member> findMembers = memberRepository.findByName(member.getName());
+		List<Member> findMembers = memberRepository.findByName(member.getName());//springJpa가 공통화 못함
 		if(!findMembers.isEmpty()) {
 			throw new IllegalStateException("이미 존재하는 회원");
 		}
@@ -48,12 +48,13 @@ public class MemberService {
 	}
 	
 	public Member findOne(Long memberId) {
-		return memberRepository.findOne(memberId);
+		//return memberRepository.findOne(memberId);
+		return memberRepository.findById(memberId).get();//springJpa는 Optional로 반환(get바로 쓰는 건 안좋은데 실습이니까)
 	}
 	
 	@Transactional
 	public void update(Long id, String name) {
-		Member member = memberRepository.findOne(id);
+		Member member = memberRepository.findById(id).get();
 		member.setName(name);
 	}
 }
