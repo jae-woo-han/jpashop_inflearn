@@ -7,7 +7,7 @@
 > * transaction(readOnly=true)
 >   - DB에서 read/write lock을 따로 쓰는 경우 해당 트랜젝션의 데이터 변경을 막는다.
 >   - JPA사용 시 FlushMode를 Manual로 변경(더티체킹 생략)
->   -  <https://www.inflearn.com/questions/7185>
+>   - 출처 : <https://www.inflearn.com/questions/7185>
 > * OSIV
 >   + ON (spring.jpa.open-in-view : true)
 >     - 최초 데이터베이스 커넥션 시작부터 API 응답이 끝날 때 까지 영속성 컨텍스트와 DB 커넥션을 유지
