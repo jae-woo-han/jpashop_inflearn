@@ -4,3 +4,5 @@
 > * @ManyToOne, 연관관계 주인(mappedBy)는 웬만하면 외래키 가지는 Entity
 > * Collection은 필드에서 초기화(null에서 안전)
 > * redis등을 쓸 때 Entity말고 DTO를 통해서 조회(영속성 관련하여 꼬일 수 있음)
+> * OSIV
+>  *
