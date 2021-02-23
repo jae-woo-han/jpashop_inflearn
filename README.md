@@ -4,6 +4,10 @@
 > * @ManyToOne, 연관관계 주인(mappedBy)는 웬만하면 외래키를 가지고 있는 Entity(master-slave 관계면 slave)
 > * Collection은 필드에서 초기화(null에서 안전)
 > * redis등을 쓸 때 Entity말고 DTO를 통해서 조회(영속성 관련하여 꼬일 수 있음)
+> * transaction(readOnly=true)
+>   - DB에서 read/write lock을 따로 쓰는 경우 해당 트랜젝션의 데이터 변경을 막는다.
+>   - JPA사용 시 FlushMode를 Manual로 변경(더티체킹 생략)
+>   -  <https://www.inflearn.com/questions/7185>
 > * OSIV
 >   + ON (spring.jpa.open-in-view : true)
 >     - 최초 데이터베이스 커넥션 시작부터 API 응답이 끝날 때 까지 영속성 컨텍스트와 DB 커넥션을 유지
@@ -13,3 +17,4 @@
 >     - 커넥션 리소스 낭비하지 않음
 >     - 트랜젝션 안에서만 지연로딩이 되므로 지연로딩 코드를 트랜젝션 안에 넣어야한다.    
 >         -> 트랜젝션이 끝나기 전에 지연로딩을 강제로 호출해야한다.
+>     - Command-query_separation
